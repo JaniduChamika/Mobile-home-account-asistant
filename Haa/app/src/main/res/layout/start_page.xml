@@ -7,53 +7,63 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="672dp"
+        android:layout_height="467dp"
         android:orientation="vertical">
 
         <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="173dp">
+            android:layout_height="433dp">
 
             <ImageView
-                android:id="@+id/imageView8"
+                android:id="@+id/imageView11"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:srcCompat="@drawable/_123" />
+                app:srcCompat="@drawable/asdf" />
         </FrameLayout>
 
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="484dp">
-
-            <TextView
-                android:id="@+id/textView16"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
-
-            <ImageView
-                android:id="@+id/imageView7"
-                android:layout_width="wrap_content"
-                android:layout_height="554dp"
-                app:srcCompat="@drawable/_24578" />
-
-            <TextView
-                android:id="@+id/textView17"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
-        </FrameLayout>
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="55dp"
+        android:layout_height="165dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView18"
+            android:layout_width="match_parent"
+            android:layout_height="59dp"
+            android:text="Welcome To"
+            android:textColor="@color/black"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView19"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Page Name"
+            android:textColor="@color/black"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView20"
+            android:layout_width="157dp"
+            android:layout_height="59dp"
+            android:text="Add the all details
+            of your bill and other
+            information of this" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="95dp"
         android:orientation="vertical">
 
         <Button
             android:id="@+id/button2"
-            android:layout_width="181dp"
-            android:layout_height="wrap_content"
+            android:layout_width="242dp"
+            android:layout_height="60dp"
             android:layout_gravity="center"
             android:text="Get Start" />
     </LinearLayout>
