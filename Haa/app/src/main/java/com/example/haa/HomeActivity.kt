@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.haa.R
 
 class HomeActivity : AppCompatActivity() {
+
 //    private lateinit var dbHelper: DBHelper
 //
 //    override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,4 +39,5 @@ class HomeActivity : AppCompatActivity() {
 //        val totalExpense = dbHelper.getTotalExpense()
 //        findViewById<TextView>(R.id.totalExpenseTextView).text = "Total Expense: $%.2f".format(totalExpense)
 //    }
+
 }

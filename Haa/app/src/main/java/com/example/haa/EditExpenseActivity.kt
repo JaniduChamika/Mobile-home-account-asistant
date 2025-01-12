@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.haa.R
 
 class EditExpenseActivity : AppCompatActivity() {
+
 //    private lateinit var dbHelper: DBHelper
 //    private var expenseId: Int = -1
 //
@@ -40,4 +41,5 @@ class EditExpenseActivity : AppCompatActivity() {
 //            }
 //        }
 //    }
+
 }

@@ -19,8 +19,7 @@
             android:layout_marginBottom="16dp"
             android:hint="Expense Name"
             android:inputType="text"
-            android:minHeight="48dp"
-          />
+            android:minHeight="48dp" />
 
         <EditText
             android:id="@+id/expenseCategoryEditText"
@@ -29,8 +28,8 @@
             android:layout_marginBottom="16dp"
             android:hint="Expense Category"
             android:inputType="text"
-            android:minHeight="48dp"
-            />
+            android:minHeight="48dp" />
+
 
         <EditText
             android:id="@+id/expenseAmountEditText"
@@ -39,8 +38,8 @@
             android:layout_marginBottom="16dp"
             android:hint="Expense Amount"
             android:inputType="numberDecimal"
-            android:minHeight="48dp"
-            />
+            android:minHeight="48dp" />
+
     </LinearLayout>
 
     <Button
@@ -49,7 +48,6 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="100dp"
         android:gravity="center"
-        android:text="Update Expense"
-         />
+        android:text="Update Expense" />
 
 </LinearLayout>

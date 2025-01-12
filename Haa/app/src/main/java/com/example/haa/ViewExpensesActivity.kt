@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.haa.R
 
 class ViewExpensesActivity : AppCompatActivity() {
+
 //    private lateinit var dbHelper: DBHelper
 //    private lateinit var adapter: ExpenseAdapter
 //
@@ -33,4 +34,5 @@ class ViewExpensesActivity : AppCompatActivity() {
 //        dbHelper.deleteExpense(id)
 //        refreshExpenses()
 //    }
+
 }

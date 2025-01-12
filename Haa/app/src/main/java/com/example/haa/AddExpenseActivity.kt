@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.haa.R
 
 class AddExpenseActivity : AppCompatActivity() {
+
 //    private lateinit var dbHelper: DBHelper
 //
 //    override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,4 +26,6 @@ class AddExpenseActivity : AppCompatActivity() {
 //            }
 //        }
 //    }
+
+
 }
