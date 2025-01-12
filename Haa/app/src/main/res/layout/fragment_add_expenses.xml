@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:scrollbars="vertical"
+    tools:context=".AddExpenses">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="New Expense"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textCategory"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Category" />
+
+            <Spinner
+                android:id="@+id/mySpinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableRight="@drawable/spinner_arrow"
+                android:dropDownWidth="match_parent"
+                android:minHeight="48dp"
+                android:popupBackground="@drawable/spinner_dropdown_bg"
+                android:scrollbars="vertical"
+                android:spinnerMode="dropdown"
+
+                />
+
+            <TextView
+                android:id="@+id/textDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Date" />
+
+            <EditText
+                android:id="@+id/editTextDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Select Spent Date"
+                android:inputType="date"
+                android:minHeight="48dp"
+                android:focusable="false"
+                android:clickable="true"/>
+
+            <TextView
+                android:id="@+id/textAmount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Amount" />
+
+            <EditText
+                android:id="@+id/expenseAmountEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginBottom="16dp"
+                android:hint="Spent Amount"
+                android:inputType="numberDecimal"
+                android:minHeight="48dp" />
+
+            <TextView
+                android:id="@+id/textNote"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Note" />
+
+            <EditText
+                android:id="@+id/noteEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:gravity="top|start"
+                android:hint="Enter your notes here"
+                android:inputType="textMultiLine"
+                android:minLines="5"
+                android:scrollHorizontally="true" />
+
+            <Button
+                android:id="@+id/saveExpenseButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:background="@drawable/default_theam_button"
+
+                android:text="Save"
+                android:textColor="@color/white" />
+
+        </LinearLayout>
+    </ScrollView>
+</FrameLayout>
