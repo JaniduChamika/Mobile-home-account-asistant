@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -19,9 +19,7 @@
             android:layout_marginBottom="16dp"
             android:hint="Expense Name"
             android:inputType="text"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:minHeight="48dp" />
 
         <EditText
             android:id="@+id/expenseCategoryEditText"
@@ -30,9 +28,8 @@
             android:layout_marginBottom="16dp"
             android:hint="Expense Category"
             android:inputType="text"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/expenseNameEditText" />
+            android:minHeight="48dp" />
+
 
         <EditText
             android:id="@+id/expenseAmountEditText"
@@ -41,9 +38,8 @@
             android:layout_marginBottom="16dp"
             android:hint="Expense Amount"
             android:inputType="numberDecimal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/expenseCategoryEditText" />
+            android:minHeight="48dp" />
+
     </LinearLayout>
 
     <Button
@@ -52,9 +48,6 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="100dp"
         android:gravity="center"
-        android:text="Update Expense"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/expenseAmountEditText" />
+        android:text="Update Expense" />
 
 </LinearLayout>
