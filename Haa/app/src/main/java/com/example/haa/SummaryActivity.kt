@@ -30,9 +30,9 @@ class SummaryActivity : AppCompatActivity() {
         totalIncomeTextView.text = "$$totalIncome"
         totalBalanceTextView.text = "$$balance"
 
-        // Button click listener to navigate back to the home screen
+        // Button click listener to navigate back to the Home screen
         homeButton.setOnClickListener {
-            val intent = Intent(this, HomeActivity::class.java) // Replace with your actual home activity
+            val intent = Intent(this, HomeActivity::class.java) // Replace with your actual Home activity
             startActivity(intent)
         }
     }
