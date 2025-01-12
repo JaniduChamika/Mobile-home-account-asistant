@@ -2,10 +2,7 @@ package com.example.haa
 
 
 import android.os.Bundle
-import android.view.View
-import android.widget.ArrayAdapter
 import android.widget.ImageButton
-import android.widget.Spinner
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
@@ -24,9 +21,11 @@ class MainActivity : AppCompatActivity() {
         addNewButton.setOnClickListener {
             openFragment(AddNew())
         }
-
+        val historyButton = findViewById<ImageButton>(R.id.historyButton)
+        historyButton.setOnClickListener {
+            openFragment(ViewHistory())
+        }
     }
-
     private fun openFragment(fragment: Fragment) {
         val fragmentTransaction: FragmentTransaction = supportFragmentManager.beginTransaction()
         fragmentTransaction.replace(R.id.fragment_container, fragment)
