@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/bg_image"
@@ -9,110 +10,53 @@
 
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_width="401dp"
+        android:layout_height="176dp">
 
-        <ImageView
-            android:id="@+id/categoryIcon1"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginEnd="10dp"
-            android:src="@drawable/ic_water" />
-
-        <TextView
-            android:id="@+id/categoryicontext"
-            android:layout_width="match_parent"
+        <ImageButton
+            android:id="@+id/imageButton2"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Water Bill"
-            android:textColor="#000000"
-            android:textSize="18sp"
-            android:textStyle="italic" />
+            android:padding="10dp"
+            app:srcCompat="@drawable/ic_profile" />
 
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="121dp"
+            android:layout_weight="1" />
+
+        <ImageButton
+            android:id="@+id/imageButton3"
+            android:layout_width="wrap_content"
+            android:layout_height="119dp"
+            android:layout_weight="1"
+            android:scaleType="center"
+            app:srcCompat="@drawable/ic_category" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
 
-        <ImageView
-            android:id="@+id/categoryIcon2"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginEnd="10dp"
-            android:src="@drawable/ic_electricity" />
-
-        <TextView
-            android:id="@+id/categoryNameTextView1"
-            android:layout_width="match_parent"
+        <ImageButton
+            android:id="@+id/imageButton4"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Electricity Bill"
-            android:textColor="#000000"
-            android:textSize="18sp"
-            android:textStyle="italic" />
-    </LinearLayout>
+            android:layout_weight="1"
+            app:srcCompat="@drawable/ic_contact" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        <Space
+            android:layout_width="19dp"
+            android:layout_height="119dp"
+            android:layout_weight="1" />
 
-        <ImageView
-            android:id="@+id/categoryIcon2"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginEnd="10dp"
-            android:src="@drawable/ic_mobile" />
-
-        <TextView
-            android:id="@+id/categoryNameTextView2"
-            android:layout_width="match_parent"
+        <ImageButton
+            android:id="@+id/imageButton5"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Mobile Bill"
-            android:textColor="#000000"
-            android:textSize="18sp"
-            android:textStyle="italic" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <ImageView
-            android:id="@+id/categoryIcon3"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginEnd="10dp"
-            android:src="@drawable/ic_bank" />
-
-        <TextView
-            android:id="@+id/categoryNameTextView3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Bank Payments"
-            android:textColor="#000000"
-            android:textSize="18sp"
-            android:textStyle="italic" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <ImageView
-            android:id="@+id/categoryIcon4"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginEnd="10dp"
-            android:src="@drawable/menu_30" />
-
-        <TextView
-            android:id="@+id/categoryNameTextView4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Others"
-            android:textColor="#000000"
-            android:textSize="18sp"
-            android:textStyle="italic" />
+            android:layout_weight="1"
+            app:srcCompat="@drawable/IC_setting" />
     </LinearLayout>
 
 </LinearLayout>
