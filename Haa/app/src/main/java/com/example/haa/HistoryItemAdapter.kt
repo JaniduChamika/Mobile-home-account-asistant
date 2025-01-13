@@ -18,7 +18,7 @@ class HistoryItemAdapter(private val historyItems: List<Expense>?) : RecyclerVie
     override fun onBindViewHolder(holder: HistoryItemViewHolder, position: Int) {
         val item = historyItems?.get(position)
         holder.title.text = item?.category
-        holder.price.text = String.format("%,.2f",item?.amount)
+        holder.price.text = "Rs. "+String.format("%,.2f",item?.amount)
         holder.date.text=item?.date
         holder.note.text=item?.note
         holder.expandHeader.setOnClickListener {
@@ -33,11 +33,12 @@ class HistoryItemAdapter(private val historyItems: List<Expense>?) : RecyclerVie
         if (expandableContent.visibility == View.VISIBLE) {
             // Collapse the content
             expandableContent.visibility = View.GONE
-            expandIcon.setImageResource(android.R.drawable.arrow_down_float)
+            expandIcon.setImageResource(R.drawable.arrow_down_24)
         } else {
             // Expand the content
             expandableContent.visibility = View.VISIBLE
-            expandIcon.setImageResource(android.R.drawable.arrow_up_float)
+            expandIcon.setImageResource(R.drawable.arrow_up_24)
+
         }
     }
 
