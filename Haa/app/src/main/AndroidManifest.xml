@@ -14,7 +14,7 @@
         android:theme="@style/Theme.Haa"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name=".LoginInterface"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,7 +23,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".Registration"></activity>
-<!--        <activity android:name=".MainActivity"></activity>-->
+        <activity android:name=".MainActivity"></activity>
 
     </application>
 
