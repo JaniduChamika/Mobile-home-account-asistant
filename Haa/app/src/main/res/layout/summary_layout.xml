@@ -3,6 +3,7 @@
 
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/BG"
     android:padding="16dp">
 
     <LinearLayout
@@ -109,8 +110,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="100dp"
-            android:layout_marginRight="100dp"
+            android:background="#06a1a4"
             android:text="Home" />
+
 
     </LinearLayout>
 

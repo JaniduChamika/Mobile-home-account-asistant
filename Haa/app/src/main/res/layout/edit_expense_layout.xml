@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/BG"
     android:orientation="vertical"
     android:padding="16dp">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="300dp">
+        android:layout_height="191dp"
+        android:layout_marginTop="200dp">
 
         <EditText
             android:id="@+id/expenseNameEditText"
@@ -47,7 +46,9 @@
         android:layout_width="185dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="100dp"
+        android:background="@drawable/default_theam_button"
         android:gravity="center"
-        android:text="Update Expense" />
+        android:text="Update Expense"
+        android:textColor="@color/white" />
 
 </LinearLayout>
