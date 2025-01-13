@@ -26,6 +26,7 @@
                     android:layout_width="286dp"
                     android:layout_height="173dp"
                     android:contentDescription="TODO"
+                    android:layout_gravity="center"
                     app:srcCompat="@drawable/_234"
                     tools:ignore="SpeakableTextPresentCheck,ImageContrastCheck" />
 
@@ -46,12 +47,12 @@
                     android:textStyle="bold" />
 
                 <EditText
-                    android:id="@+id/editTextTextPersonName3"
+                    android:id="@+id/editEmail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:hint="Enter the Email"
-                    android:inputType="textPersonName"
+                    android:inputType="textEmailAddress"
                     android:minHeight="48dp"
                     android:padding="5dp" />
 
@@ -68,12 +69,12 @@
                     android:textStyle="bold" />
 
                 <EditText
-                    android:id="@+id/editTextTextPersonName4"
+                    android:id="@+id/editPassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:hint="Enter the Password"
-                    android:inputType="textPersonName"
+                    android:inputType="textPassword"
                     android:minHeight="48dp"
                     android:padding="5dp" />
 
