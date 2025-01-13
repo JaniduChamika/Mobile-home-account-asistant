@@ -91,6 +91,7 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
 
             )
         }
+        db.close()
         return user
     }
 
@@ -109,6 +110,7 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
 
             )
         }
+        db.close()
         return user
     }
 
@@ -137,7 +139,7 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
     }
 
 
-    fun getAllIncomes():List<Income>? {
+    fun getAllIncomes(): List<Income>? {
         val db = this.readableDatabase
         val cursor = db.rawQuery("SELECT * FROM $TABLE_INCOME ", null)
         val incomeList = mutableListOf<Income>()
@@ -152,11 +154,12 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
             incomeList.add(income)
         }
         cursor.close()
+        db.close()
         return incomeList
     }
 
 
-    fun getAllExpenses():List<Expense>? {
+    fun getAllExpenses(): List<Expense>? {
         val db = this.readableDatabase
         val cursor = db.rawQuery("SELECT * FROM $TABLE_EXPENSE ", null)
         val expenseList = mutableListOf<Expense>()
@@ -172,6 +175,65 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
             expenseList.add(expense)
         }
         cursor.close()
+        db.close()
         return expenseList
+    }
+
+    fun getTotalExpenses(): Double {
+        val db = this.readableDatabase
+        val cursor = db.rawQuery("SELECT SUM($COLUMN_EXPENSE_AMOUNT) FROM $TABLE_EXPENSE", null)
+        var total = 0.0
+        if (cursor.moveToFirst()) {
+            total = cursor.getDouble(0)
+        }
+        cursor.close()
+        db.close()
+        return total
+    }
+
+    fun getTotalIncome(): Double {
+        val db = this.readableDatabase
+        val cursor = db.rawQuery("SELECT SUM($COLUMN_INCOME_AMOUNT) FROM $TABLE_INCOME", null)
+        var total = 0.0
+        if (cursor.moveToFirst()) {
+            total = cursor.getDouble(0)
+        }
+        cursor.close()
+        db.close()
+        return total
+    }
+
+    fun getTotalExpensesForCurrentMonth(): Double {
+        val db = this.readableDatabase
+
+        val query = "SELECT SUM($COLUMN_EXPENSE_AMOUNT)" +
+                " FROM $TABLE_EXPENSE" +
+                " WHERE strftime('%Y-%m', $COLUMN_EXPENSE_DATE) = strftime('%Y-%m', 'now')"
+
+        val cursor = db.rawQuery(query, null)
+        var totalAmount = 0.0
+        if (cursor.moveToFirst()) {
+            totalAmount = cursor.getDouble(0)
+        }
+        cursor.close()
+        db.close()
+        return totalAmount
+    }
+
+    fun getTotalIncomeForCurrentMonth(): Double {
+        val db = this.readableDatabase
+
+        val query = "SELECT SUM(${COLUMN_INCOME_AMOUNT})" +
+                " FROM $TABLE_INCOME" +
+                " WHERE strftime('%Y-%m', $COLUMN_INCOME_DATE) = strftime('%Y-%m', 'now')"
+
+        val cursor = db.rawQuery(query, null)
+        var totalAmount = 0.0
+        if (cursor.moveToFirst()) {
+            totalAmount = cursor.getDouble(0)
+        }
+        cursor.close()
+        db.close()
+        return totalAmount
     }
 }

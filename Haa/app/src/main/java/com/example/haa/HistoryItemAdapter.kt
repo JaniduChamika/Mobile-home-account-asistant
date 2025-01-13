@@ -18,7 +18,7 @@ class HistoryItemAdapter(private val historyItems: List<Expense>?) : RecyclerVie
     override fun onBindViewHolder(holder: HistoryItemViewHolder, position: Int) {
         val item = historyItems?.get(position)
         holder.title.text = item?.category
-        holder.price.text = String.format("%.2f",item?.amount)
+        holder.price.text = String.format("%,.2f",item?.amount)
         holder.date.text=item?.date
         holder.note.text=item?.note
         holder.expandHeader.setOnClickListener {
