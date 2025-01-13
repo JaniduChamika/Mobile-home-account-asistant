@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.haa.datamodel.Expense
+import com.example.haa.datamodel.Income
 
 
 class ViewExpensesHistory : Fragment() {
@@ -20,21 +22,16 @@ class ViewExpensesHistory : Fragment() {
 //       history item start
         val recyclerView: RecyclerView =view.findViewById(R.id.recyclerView)
 
-        // Sample data
-        val historyItemLists = listOf(
-            HistoryItem("HistoryItem 1", "Rs 1000","2025-09-02","additional note"),
-            HistoryItem("HistoryItem 2", "Rs 2000","2025-09-02","additional note 2"),
-            HistoryItem("HistoryItem 3", "Rs 3000","2025-09-02","additional note 3"),
-            HistoryItem("HistoryItem 4", "Rs 4000","2025-09-02","additional note 4")
-        )
-
+        //data load start
+        val dbHelper = DBHelper(requireContext().applicationContext)
+        val historyItemLists: List<Expense>? = dbHelper.getAllExpenses()
         // Create adapter and set it to RecyclerView
         val adapter = HistoryItemAdapter(historyItemLists)
         recyclerView.adapter = adapter
 
         // Set the layout manager
         recyclerView.layoutManager = LinearLayoutManager(view.context)
-//        history item end
+        //data load start
         return view
     }
 
