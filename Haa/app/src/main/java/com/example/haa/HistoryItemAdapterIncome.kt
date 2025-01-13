@@ -15,7 +15,7 @@ class HistoryItemAdapterIncome (private val historyItems: List<Income>?) : Recyc
     override fun onBindViewHolder(holder: HistoryItemViewHolderIncome, position: Int) {
         val item = historyItems?.get(position)
         holder.title.text = item?.category
-        holder.price.text = "Rs. "+String.format("%.2f",item?.amount)
+        holder.price.text = "Rs. "+String.format("%,.2f",item?.amount)
         holder.date.text=item?.date
 
     }
