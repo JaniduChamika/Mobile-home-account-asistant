@@ -33,7 +33,7 @@
                 android:text="Category" />
 
             <Spinner
-                android:id="@+id/mySpinner"
+                android:id="@+id/categorySpinner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableRight="@drawable/spinner_arrow"

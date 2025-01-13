@@ -7,11 +7,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.Button
 import android.widget.EditText
 import android.widget.Spinner
+import android.widget.Toast
 import androidx.fragment.app.FragmentManager
 import java.text.SimpleDateFormat
 import java.util.Calendar
+import java.util.Date
 import java.util.Locale
 
 
@@ -27,6 +30,7 @@ class AddIncome : Fragment() {
 
         //date chooser start
         val datePiker = view.findViewById<EditText>(R.id.editTextDate)
+        val saveExpenseButton = view.findViewById<Button>(R.id.saveExpenseButton)
         val calendar = Calendar.getInstance()
 
         val dateSetListener = DatePickerDialog.OnDateSetListener { _, year, month, dayOfMonth ->
@@ -39,17 +43,17 @@ class AddIncome : Fragment() {
         datePiker.setOnClickListener {
             showDatePicker(calendar, dateSetListener)
         }
+        saveExpenseButton.setOnClickListener {
+            saveIncome(view)
+        }
+
         //date chooser end
 
-        val spinner: Spinner = view.findViewById(R.id.mySpinner)
+        val spinner: Spinner = view.findViewById(R.id.categorySpinner)
         val options = arrayListOf(
-            "Select an option",
-            "Option 1",
-            "Option 2",
-            "Option 3",
-            "Option 4",
-            "Option 5",
-            "Option 6"
+            "Select Category",
+            "Salary",
+            "From Business"
         )
         val adapter =
             ArrayAdapter(requireContext(), android.R.layout.simple_spinner_dropdown_item, options)
@@ -73,4 +77,30 @@ class AddIncome : Fragment() {
         ).show()
     }
 
+    private fun saveIncome(view: View) {
+        val dbHelper = DBHelper(requireContext().applicationContext)
+        val category = view.findViewById<Spinner>(R.id.categorySpinner)
+        val inputDate = view.findViewById<EditText>(R.id.editTextDate)
+        val amount = view.findViewById<EditText>(R.id.expenseAmountEditText)
+
+        if (category.selectedItemPosition==0) {
+            Toast.makeText(requireContext(), "Please Select Category", Toast.LENGTH_SHORT)
+                .show()
+        } else if (inputDate.text.isEmpty()) {
+            Toast.makeText(requireContext(), "Please Select Date", Toast.LENGTH_SHORT)
+                .show()
+        } else if (amount.text.isEmpty()) {
+            Toast.makeText(requireContext(), "Please Enter Amount", Toast.LENGTH_SHORT)
+                .show()
+        } else {
+            dbHelper.insertIncome(
+                category.selectedItem.toString(),
+                inputDate.text.toString(),
+                amount.text.toString().toDouble()
+            )
+            category.setSelection(0)
+            inputDate.setText("")
+            amount.setText("")
+        }
+    }
 }
