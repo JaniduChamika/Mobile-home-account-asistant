@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 
 
 class Home : Fragment() {
@@ -14,7 +15,10 @@ class Home : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false)
+        val view= inflater.inflate(R.layout.fragment_home, container, false)
+        val name=arguments?.getString("name")
+        view.findViewById<TextView>(R.id.textUsername).text="Hi! $name"
+        return view
     }
 
 }
