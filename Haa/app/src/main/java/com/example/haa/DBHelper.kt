@@ -4,6 +4,7 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import com.example.haa.datamodel.Category
 import com.example.haa.datamodel.Expense
 import com.example.haa.datamodel.Income
 import com.example.haa.datamodel.User
@@ -35,6 +36,15 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
         const val COLUMN_EXPENSE_AMOUNT = "amount"
         const val COLUMN_EXPENSE_DATE = "date"
         const val COLUMN_EXPENSE_NOTE = "note"
+        //Income category table
+        const val TABLE_INCOME_CATEGORY = "Income_category"
+        const val COLUMN_INCOME_CATEGORY_ID = "id"
+        const val COLUMN_INCOME_CATEGORY_NAME = "name"
+
+        //EXPENSE category table
+        const val TABLE_EXPENSE_CATEGORY = "Expense_category"
+        const val COLUMN_EXPENSE_CATEGORY_ID = "id"
+        const val COLUMN_EXPENSE_CATEGORY_NAME = "name"
 
     }
 
@@ -57,15 +67,25 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
                 + "$COLUMN_EXPENSE_AMOUNT REAL , "
                 + "$COLUMN_EXPENSE_DATE TEXT,"
                 + "$COLUMN_EXPENSE_NOTE TEXT )")
+        val createExpenseCategoryTable = ("CREATE TABLE $TABLE_EXPENSE_CATEGORY ("
+                + "$COLUMN_EXPENSE_CATEGORY_ID INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + "$COLUMN_EXPENSE_CATEGORY_NAME TEXT)")
+        val createIncomeCategoryTable = ("CREATE TABLE $TABLE_INCOME_CATEGORY ("
+                + "$COLUMN_INCOME_CATEGORY_ID INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + "$COLUMN_INCOME_CATEGORY_NAME TEXT)")
         db?.execSQL(createUsersTable)
         db?.execSQL(createIncomeTable)
         db?.execSQL(createExpenseTable)
+        db?.execSQL(createExpenseCategoryTable)
+        db?.execSQL(createIncomeCategoryTable)
     }
 
     override fun onUpgrade(db: SQLiteDatabase?, p1: Int, p2: Int) {
         db?.execSQL("DROP TABLE IF EXISTS $TABLE_USERS")
         db?.execSQL("DROP TABLE IF EXISTS $TABLE_INCOME")
         db?.execSQL("DROP TABLE IF EXISTS $TABLE_EXPENSE")
+        db?.execSQL("DROP TABLE IF EXISTS $TABLE_EXPENSE_CATEGORY")
+        db?.execSQL("DROP TABLE IF EXISTS $TABLE_INCOME_CATEGORY")
     }
 
     // Insert User
@@ -138,7 +158,20 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
 
     }
 
-
+    fun insertExCategory(name: String) {
+        val db = this.writableDatabase
+        val contentValues = ContentValues()
+        contentValues.put(COLUMN_EXPENSE_CATEGORY_NAME, name)
+        db.insert(TABLE_EXPENSE_CATEGORY, null, contentValues)
+        db.close()
+    }
+    fun insertInCategory(name: String) {
+        val db = this.writableDatabase
+        val contentValues = ContentValues()
+        contentValues.put(COLUMN_INCOME_CATEGORY_NAME, name)
+        db.insert(TABLE_INCOME_CATEGORY, null, contentValues)
+        db.close()
+    }
     fun getAllIncomes(): List<Income>? {
         val db = this.readableDatabase
         val cursor = db.rawQuery("SELECT * FROM $TABLE_INCOME ", null)
@@ -235,5 +268,38 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
         cursor.close()
         db.close()
         return totalAmount
+    }
+
+    fun getAllIncomeCategory(): List<Category>? {
+        val db = this.readableDatabase
+        val cursor = db.rawQuery("SELECT * FROM $TABLE_INCOME_CATEGORY ", null)
+        val categoryList = mutableListOf<Category>()
+        var category: Category? = null
+        while (cursor.moveToNext()) {
+            category = Category(
+                id = cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_INCOME_CATEGORY_ID)),
+                name = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_INCOME_CATEGORY_NAME))
+            )
+            categoryList.add(category)
+        }
+        cursor.close()
+        db.close()
+        return categoryList
+    }
+    fun getAllExpenseCategory(): List<Category>? {
+        val db = this.readableDatabase
+        val cursor = db.rawQuery("SELECT * FROM $TABLE_EXPENSE_CATEGORY ", null)
+        val categoryList = mutableListOf<Category>()
+        var category: Category? = null
+        while (cursor.moveToNext()) {
+            category = Category(
+                id = cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_EXPENSE_CATEGORY_ID)),
+                name = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_EXPENSE_CATEGORY_NAME))
+            )
+            categoryList.add(category)
+        }
+        cursor.close()
+        db.close()
+        return categoryList
     }
 }

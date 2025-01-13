@@ -50,11 +50,14 @@ class AddIncome : Fragment() {
         //date chooser end
 
         val spinner: Spinner = view.findViewById(R.id.categorySpinner)
+        val dbHelper = DBHelper(requireContext().applicationContext)
+        val inomeCategory = dbHelper.getAllIncomeCategory()
         val options = arrayListOf(
             "Select Category",
-            "Salary",
-            "From Business"
         )
+        if (inomeCategory != null) {
+            options.addAll(inomeCategory.map { it.name })
+        }
         val adapter =
             ArrayAdapter(requireContext(), android.R.layout.simple_spinner_dropdown_item, options)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
@@ -83,7 +86,7 @@ class AddIncome : Fragment() {
         val inputDate = view.findViewById<EditText>(R.id.editTextDate)
         val amount = view.findViewById<EditText>(R.id.expenseAmountEditText)
 
-        if (category.selectedItemPosition==0) {
+        if (category.selectedItemPosition == 0) {
             Toast.makeText(requireContext(), "Please Select Category", Toast.LENGTH_SHORT)
                 .show()
         } else if (inputDate.text.isEmpty()) {

@@ -72,7 +72,6 @@
                 android:id="@+id/expenseAmountEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
                 android:layout_marginBottom="16dp"
                 android:hint="Income Amount"
                 android:inputType="numberDecimal"
