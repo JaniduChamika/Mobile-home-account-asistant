@@ -6,8 +6,9 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.recyclerview.widget.RecyclerView
+import com.example.haa.datamodel.Expense
 
-class HistoryItemAdapter(private val historyItems: List<HistoryItem>) : RecyclerView.Adapter<HistoryItemViewHolder>() {
+class HistoryItemAdapter(private val historyItems: List<Expense>?) : RecyclerView.Adapter<HistoryItemViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HistoryItemViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.history_item_layout, parent, false)
@@ -15,18 +16,18 @@ class HistoryItemAdapter(private val historyItems: List<HistoryItem>) : Recycler
     }
 
     override fun onBindViewHolder(holder: HistoryItemViewHolder, position: Int) {
-        val item = historyItems[position]
-        holder.title.text = item.title
-        holder.price.text = item.price
-        holder.date.text=item.date
-        holder.note.text=item.note
+        val item = historyItems?.get(position)
+        holder.title.text = item?.category
+        holder.price.text = String.format("%.2f",item?.amount)
+        holder.date.text=item?.date
+        holder.note.text=item?.note
         holder.expandHeader.setOnClickListener {
             toggleExpand(holder.expandableContent, holder.expandIcon)
         }
     }
 
     override fun getItemCount(): Int {
-        return historyItems.size
+        return historyItems?.size?:0
     }
     private fun toggleExpand(expandableContent: LinearLayout, expandIcon: ImageView) {
         if (expandableContent.visibility == View.VISIBLE) {

@@ -4,6 +4,8 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import com.example.haa.datamodel.Expense
+import com.example.haa.datamodel.Income
 import com.example.haa.datamodel.User
 import com.google.android.material.tabs.TabLayout.Tab
 import java.util.Date
@@ -121,7 +123,7 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
 
     }
 
-    fun insertExpense(category: String,date: String, amount: Double,  note: String?) {
+    fun insertExpense(category: String, date: String, amount: Double, note: String?) {
         val db = this.writableDatabase
         val contentValues = ContentValues()
         contentValues.put(COLUMN_EXPENSE_CATEGORY, category)
@@ -132,5 +134,44 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
         db.insert(TABLE_EXPENSE, null, contentValues)
         db.close()
 
+    }
+
+
+    fun getAllIncomes():List<Income>? {
+        val db = this.readableDatabase
+        val cursor = db.rawQuery("SELECT * FROM $TABLE_INCOME ", null)
+        val incomeList = mutableListOf<Income>()
+        var income: Income? = null
+        while (cursor.moveToNext()) {
+            income = Income(
+                id = cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_INCOME_ID)),
+                category = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_INCOME_CATEGORY)),
+                date = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_INCOME_DATE)),
+                amount = cursor.getDouble(cursor.getColumnIndexOrThrow(COLUMN_INCOME_AMOUNT))
+            )
+            incomeList.add(income)
+        }
+        cursor.close()
+        return incomeList
+    }
+
+
+    fun getAllExpenses():List<Expense>? {
+        val db = this.readableDatabase
+        val cursor = db.rawQuery("SELECT * FROM $TABLE_EXPENSE ", null)
+        val expenseList = mutableListOf<Expense>()
+        var expense: Expense? = null
+        while (cursor.moveToNext()) {
+            expense = Expense(
+                id = cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_EXPENSE_ID)),
+                category = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_EXPENSE_CATEGORY)),
+                date = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_EXPENSE_DATE)),
+                amount = cursor.getDouble(cursor.getColumnIndexOrThrow(COLUMN_EXPENSE_AMOUNT)),
+                note = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_EXPENSE_NOTE))
+            )
+            expenseList.add(expense)
+        }
+        cursor.close()
+        return expenseList
     }
 }
