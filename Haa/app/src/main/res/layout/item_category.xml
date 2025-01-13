@@ -15,23 +15,20 @@
 
         <ImageButton
             android:id="@+id/imageButton2"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
             android:padding="10dp"
-            app:srcCompat="@drawable/ic_profile" />
-
-        <Space
-            android:layout_width="wrap_content"
-            android:layout_height="121dp"
-            android:layout_weight="1" />
+            app:srcCompat="@drawable/profile" />
 
         <ImageButton
             android:id="@+id/imageButton3"
-            android:layout_width="wrap_content"
-            android:layout_height="119dp"
+            android:layout_width="0dp"
             android:layout_weight="1"
+            android:layout_height="119dp"
             android:scaleType="center"
-            app:srcCompat="@drawable/ic_category" />
+            app:srcCompat="@drawable/catagory" />
+
     </LinearLayout>
 
     <LinearLayout
@@ -41,22 +38,18 @@
 
         <ImageButton
             android:id="@+id/imageButton4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="0dp"
             android:layout_weight="1"
-            app:srcCompat="@drawable/ic_contact" />
-
-        <Space
-            android:layout_width="19dp"
-            android:layout_height="119dp"
-            android:layout_weight="1" />
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/contact" />
 
         <ImageButton
             android:id="@+id/imageButton5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="0dp"
             android:layout_weight="1"
-            app:srcCompat="@drawable/IC_setting" />
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/setting" />
+
     </LinearLayout>
 
 </LinearLayout>
