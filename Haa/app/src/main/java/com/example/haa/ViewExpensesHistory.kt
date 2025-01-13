@@ -28,8 +28,6 @@ class ViewExpensesHistory : Fragment() {
         // Create adapter and set it to RecyclerView
         val adapter = HistoryItemAdapter(historyItemLists)
         recyclerView.adapter = adapter
-
-        // Set the layout manager
         recyclerView.layoutManager = LinearLayoutManager(view.context)
         //data load start
         return view

@@ -12,12 +12,15 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val myintent= intent
-        val userName=myintent.getStringExtra("name")
-        val userEmail=myintent.getStringExtra("email")
+//        val myintent= intent
+//        val userName=myintent.getStringExtra("name")
+//        val userEmail=myintent.getStringExtra("email")
+//        val bundle=Bundle()
+//        bundle.putString("name",userName)
+//        bundle.putString("email",userEmail)
         val bundle=Bundle()
-        bundle.putString("name",userName)
-        bundle.putString("email",userEmail)
+        bundle.putString("name","Janidu")
+        bundle.putString("email","email")
         openHomeFragment(Home(),bundle)
 
         val homeButon = findViewById<ImageButton>(R.id.homeButton)
@@ -31,6 +34,11 @@ class MainActivity : AppCompatActivity() {
         val historyButton = findViewById<ImageButton>(R.id.historyButton)
         historyButton.setOnClickListener {
             openFragment(ViewHistory())
+        }
+
+        val menuButton = findViewById<ImageButton>(R.id.menuButton)
+        menuButton.setOnClickListener {
+            openFragment(MoreMenu())
         }
     }
     private fun openFragment(fragment: Fragment) {

@@ -2,31 +2,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp"
-    android:background="@drawable/bg_image">
-
-    <EditText
-        android:id="@+id/categoryEditText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Enter category name"
-        android:padding="10dp"
-        android:background="@android:drawable/editbox_background"
-        android:layout_marginBottom="16dp" />
+    android:background="@drawable/bg_image"
+    android:orientation="vertical">
 
 
-    <Button
-        android:id="@+id/addCategoryButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Add Category"
-        android:layout_marginBottom="16dp" />
 
-    
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/categoryRecyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:dividerHeight="1dp" />
 </LinearLayout>

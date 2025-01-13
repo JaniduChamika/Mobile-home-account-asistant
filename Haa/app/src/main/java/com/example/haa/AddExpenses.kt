@@ -44,13 +44,14 @@ class AddExpenses : Fragment() {
         }
         //date chooser end
         val spinner: Spinner = view.findViewById(R.id.categorySpinner)
+        val dbHelper = DBHelper(requireContext().applicationContext)
+        val expnesCategory = dbHelper.getAllExpenseCategory()
         val options = arrayListOf(
-            "Select Category",
-            "Electricity Bill",
-            "Water Bill",
-            "Phone Bill",
-            "Apartment Rent"
+            "Select Category"
         )
+        if (expnesCategory != null) {
+            options.addAll(expnesCategory.map { it.name })
+        }
         val adapter =
             ArrayAdapter(requireContext(), android.R.layout.simple_spinner_dropdown_item, options)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
@@ -72,13 +73,14 @@ class AddExpenses : Fragment() {
             calendar.get(Calendar.DAY_OF_MONTH)
         ).show()
     }
+
     private fun saveExpense(view: View) {
         val dbHelper = DBHelper(requireContext().applicationContext)
         val category = view.findViewById<Spinner>(R.id.categorySpinner)
         val inputDate = view.findViewById<EditText>(R.id.editTextDate)
         val amount = view.findViewById<EditText>(R.id.expenseAmountEditText)
         val note = view.findViewById<EditText>(R.id.noteEditText)
-        if (category.selectedItemPosition==0) {
+        if (category.selectedItemPosition == 0) {
             Toast.makeText(requireContext(), "Please Select Category", Toast.LENGTH_SHORT)
                 .show()
         } else if (inputDate.text.isEmpty()) {
@@ -88,7 +90,11 @@ class AddExpenses : Fragment() {
             Toast.makeText(requireContext(), "Please Enter Amount", Toast.LENGTH_SHORT)
                 .show()
         } else if (note.text.isEmpty()) {
-            Toast.makeText(requireContext(), "Please Enter Note about you expense", Toast.LENGTH_SHORT)
+            Toast.makeText(
+                requireContext(),
+                "Please Enter Note about you expense",
+                Toast.LENGTH_SHORT
+            )
                 .show()
         } else {
             dbHelper.insertExpense(
