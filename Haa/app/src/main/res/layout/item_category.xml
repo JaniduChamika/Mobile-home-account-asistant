@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/BG"
+    android:background="@drawable/bg_image"
     android:gravity="center_vertical"
     android:orientation="vertical"
     android:padding="10dp">
@@ -13,7 +13,7 @@
         android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/categoryIcon"
+            android:id="@+id/categoryIcon1"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginEnd="10dp"
@@ -42,7 +42,7 @@
             android:src="@drawable/ic_electricity" />
 
         <TextView
-            android:id="@+id/categoryNameTextView"
+            android:id="@+id/categoryNameTextView1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Electricity Bill"
@@ -56,14 +56,14 @@
         android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/categoryIcon"
+            android:id="@+id/categoryIcon2"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginEnd="10dp"
             android:src="@drawable/ic_mobile" />
 
         <TextView
-            android:id="@+id/categoryNameTextView"
+            android:id="@+id/categoryNameTextView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Mobile Bill"
@@ -77,14 +77,14 @@
         android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/categoryIcon"
+            android:id="@+id/categoryIcon3"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginEnd="10dp"
             android:src="@drawable/ic_bank" />
 
         <TextView
-            android:id="@+id/categoryNameTextView"
+            android:id="@+id/categoryNameTextView3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Bank Payments"
@@ -99,14 +99,14 @@
         android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/categoryIcon"
+            android:id="@+id/categoryIcon4"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginEnd="10dp"
             android:src="@drawable/menu_30" />
 
         <TextView
-            android:id="@+id/categoryNameTextView"
+            android:id="@+id/categoryNameTextView4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Others"
