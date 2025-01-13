@@ -25,7 +25,7 @@ class ViewHistory : Fragment() {
             expensesButton.setTextColor(Color.BLACK)
             incomeButton.setBackgroundResource(R.drawable.default_theam_button)
             incomeButton.setTextColor(Color.WHITE)
-//            openFinanceHistoryTab(ViewExpensesHistory())
+            openFinanceHistoryTab(ViewIncomeHistory())
         }
         expensesButton.setOnClickListener {
             incomeButton.setBackgroundResource(R.drawable.default_white_button)
