@@ -47,7 +47,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Full Name"
-                    android:textSize="20sp"
+                    android:textColor="@color/gray_700"
+                    android:layout_marginBottom="5dp"
+                    android:textSize="16sp"
                     android:textStyle="bold" />
 
                 <EditText
@@ -55,37 +57,53 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="5dp"
+                    android:alpha="0.8"
+                    android:background="@drawable/edittext_rounded_border"
                     android:ems="10"
                     android:hint="Enter Your Name"
                     android:inputType="textPersonName"
                     android:minHeight="48dp"
-                    android:padding="5dp" />
+                    android:padding="5dp"
+                    android:paddingStart="20dp"
+                    android:textColor="@color/text_box_font_theam"
+                    android:textColorHint="@color/gray_400"
+                    android:textSize="16sp" />
 
                 <TextView
                     android:id="@+id/textView4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Email"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
+                    android:textColor="@color/gray_700"
+                    android:layout_marginBottom="5dp"
+                    android:textSize="16sp"
+                    android:textStyle="bold"/>
 
                 <EditText
                     android:id="@+id/editEmail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="5dp"
+                    android:alpha="0.8"
+                    android:background="@drawable/edittext_rounded_border"
                     android:ems="10"
                     android:hint="Enter Your Email"
                     android:inputType="textEmailAddress"
                     android:minHeight="48dp"
-                    android:padding="5dp" />
+                    android:padding="5dp"
+                    android:paddingStart="20dp"
+                    android:textColor="@color/text_box_font_theam"
+                    android:textColorHint="@color/gray_400"
+                    android:textSize="16sp" />
 
                 <TextView
                     android:id="@+id/textView6"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Password"
-                    android:textSize="20sp"
+                    android:textColor="@color/gray_700"
+                    android:layout_marginBottom="5dp"
+                    android:textSize="16sp"
                     android:textStyle="bold" />
 
                 <EditText
@@ -93,18 +111,26 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="5dp"
+                    android:alpha="0.8"
+                    android:background="@drawable/edittext_rounded_border"
                     android:ems="10"
                     android:hint="Enter Your Password"
                     android:inputType="textPassword"
                     android:minHeight="48dp"
-                    android:padding="5dp" />
+                    android:padding="5dp"
+                    android:paddingStart="20dp"
+                    android:textColor="@color/text_box_font_theam"
+                    android:textColorHint="@color/gray_400"
+                    android:textSize="16sp" />
 
                 <TextView
                     android:id="@+id/textView7"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Re Password"
-                    android:textSize="20sp"
+                    android:text="Re-Password"
+                    android:textColor="@color/gray_700"
+                    android:layout_marginBottom="5dp"
+                    android:textSize="16sp"
                     android:textStyle="bold" />
 
                 <EditText
@@ -116,7 +142,13 @@
                     android:hint="Conform Your Password"
                     android:inputType="textPassword"
                     android:minHeight="48dp"
-                    android:padding="5dp" />
+                    android:padding="5dp"
+                    android:alpha="0.8"
+                    android:paddingStart="20dp"
+                    android:background="@drawable/edittext_rounded_border"
+                    android:textColor="@color/text_box_font_theam"
+                    android:textColorHint="@color/gray_400"
+                    android:textSize="16sp" />
 
                 <Button
                     android:id="@+id/signupButton"
@@ -127,7 +159,11 @@
                     android:background="@drawable/default_theam_button"
                     android:text="Sign Up"
                     android:textColor="@color/white"
-                    android:textSize="20sp" />
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textAllCaps="false"
+                    android:elevation="10dp"
+                    android:layout_marginVertical="10dp"/>
             </LinearLayout>
 
             <LinearLayout

@@ -36,6 +36,7 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
         const val COLUMN_EXPENSE_AMOUNT = "amount"
         const val COLUMN_EXPENSE_DATE = "date"
         const val COLUMN_EXPENSE_NOTE = "note"
+
         //Income category table
         const val TABLE_INCOME_CATEGORY = "Income_category"
         const val COLUMN_INCOME_CATEGORY_ID = "id"
@@ -78,6 +79,7 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
         db?.execSQL(createExpenseTable)
         db?.execSQL(createExpenseCategoryTable)
         db?.execSQL(createIncomeCategoryTable)
+        insertInitalCategory(db)
     }
 
     override fun onUpgrade(db: SQLiteDatabase?, p1: Int, p2: Int) {
@@ -86,6 +88,7 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
         db?.execSQL("DROP TABLE IF EXISTS $TABLE_EXPENSE")
         db?.execSQL("DROP TABLE IF EXISTS $TABLE_EXPENSE_CATEGORY")
         db?.execSQL("DROP TABLE IF EXISTS $TABLE_INCOME_CATEGORY")
+
     }
 
     // Insert User
@@ -165,6 +168,7 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
         db.insert(TABLE_EXPENSE_CATEGORY, null, contentValues)
         db.close()
     }
+
     fun insertInCategory(name: String) {
         val db = this.writableDatabase
         val contentValues = ContentValues()
@@ -172,6 +176,34 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
         db.insert(TABLE_INCOME_CATEGORY, null, contentValues)
         db.close()
     }
+
+    fun insertInitalCategory(db: SQLiteDatabase?) {
+        val initialCategories = listOf(
+            "Salary",
+            "Freelance",
+            "Investment"
+        )
+
+        for (category in initialCategories) {
+            val values = ContentValues().apply {
+                put(COLUMN_INCOME_CATEGORY_NAME, category)
+            }
+            db?.insert(TABLE_INCOME_CATEGORY, null, values)
+        }
+
+        val initialExpenseCategories = listOf(
+            "Electricity Bill",
+            "Water Bill"
+        )
+
+        for (category in initialExpenseCategories) {
+            val values = ContentValues().apply {
+                put(COLUMN_EXPENSE_CATEGORY_NAME, category)
+            }
+            db?.insert(TABLE_EXPENSE_CATEGORY, null, values)
+        }
+    }
+
     fun getAllIncomes(): List<Income>? {
         val db = this.readableDatabase
         val cursor = db.rawQuery("SELECT * FROM $TABLE_INCOME ", null)
@@ -286,6 +318,7 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
         db.close()
         return categoryList
     }
+
     fun getAllExpenseCategory(): List<Category>? {
         val db = this.readableDatabase
         val cursor = db.rawQuery("SELECT * FROM $TABLE_EXPENSE_CATEGORY ", null)
