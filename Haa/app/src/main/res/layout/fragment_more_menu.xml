@@ -200,7 +200,7 @@
                         android:contentDescription="image_description"
                         android:padding="10dp"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/contact_us" />
+                        android:src="@drawable/logout" />
 
                     <TextView
 

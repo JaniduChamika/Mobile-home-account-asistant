@@ -350,11 +350,22 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
             "$COLUMN_USER_EMAIL = ?",     // WHERE clause: filter by email
             arrayOf(email)               // The value for the filter (email)
         )
-
         db.close()
-
     }
+    fun updateProfile(email: String, name: String,password: String) {
+        val db = writableDatabase
+        val values = ContentValues()
+        values.put(COLUMN_USER_NAME, name)
+        values.put(COLUMN_USER_PASSWORD, password)
 
+        db.update(
+            TABLE_USERS,
+            values,
+            "$COLUMN_USER_EMAIL = ?",
+            arrayOf(email)
+        )
+        db.close()
+    }
     fun findUserByStatus(status: Int): User? {
         val db = readableDatabase
         var user: User? = null

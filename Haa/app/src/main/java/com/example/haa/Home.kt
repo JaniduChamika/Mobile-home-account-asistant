@@ -34,18 +34,22 @@ class Home : Fragment() {
         val balaceText = view.findViewById<TextView>(R.id.textBalance)
         balaceText.text = "Rs. " + String.format("%,.2f", (totalIncome - totalExpense))
 
-        val monthlyIncomeText=view.findViewById<TextView>(R.id.textMonthlyIncome)
-        val monthlyExpense=dbhelper.getTotalExpensesForCurrentMonth()
-        val monthlyExpenseText=view.findViewById<TextView>(R.id.textMonthlyExpense)
-        monthlyExpenseText.text="Rs. "+ String.format("%,.2f", monthlyExpense)
-        val monthlyIncome=dbhelper.getTotalIncomeForCurrentMonth()
-        monthlyIncomeText.text="Rs. "+ String.format("%,.2f", monthlyIncome)
+        val monthlyIncomeText = view.findViewById<TextView>(R.id.textMonthlyIncome)
+        val monthlyExpense = dbhelper.getTotalExpensesForCurrentMonth()
+        val monthlyExpenseText = view.findViewById<TextView>(R.id.textMonthlyExpense)
+        monthlyExpenseText.text = "Rs. " + String.format("%,.2f", monthlyExpense)
+        val monthlyIncome = dbhelper.getTotalIncomeForCurrentMonth()
+        monthlyIncomeText.text = "Rs. " + String.format("%,.2f", monthlyIncome)
 
     }
 
     fun loadUserName(view: View) {
-        val name = arguments?.getString("name")
-        view.findViewById<TextView>(R.id.textUsername).text = "Hi! $name"
+        val dbHelper = DBHelper(requireContext().applicationContext)
+        val user = dbHelper.findUserByStatus(1)
+        if (user != null) {
+            view.findViewById<TextView>(R.id.textUsername).text = "Hi! ${user.name}"
+        }
+
 
     }
 
