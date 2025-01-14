@@ -1,7 +1,7 @@
 package com.example.haa
 
 
-import android.content.Intent
+
 import android.os.Bundle
 import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
@@ -12,20 +12,21 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val myintent= intent
-        val userName=myintent.getStringExtra("name")
-        val userEmail=myintent.getStringExtra("email")
-        val bundle=Bundle()
-        bundle.putString("name",userName)
-        bundle.putString("email",userEmail)
+        val myintent = intent
+        val userName = myintent.getStringExtra("name")
+        val userEmail = myintent.getStringExtra("email")
+        val bundle = Bundle()
+        bundle.putString("name", userName)
+        bundle.putString("email", userEmail)
 //        val bundle=Bundle()
 //        bundle.putString("name","Janidu")
 //        bundle.putString("email","email")
-        openHomeFragment(Home(),bundle)
+        openHomeFragment(Home(), bundle)
+
 
         val homeButon = findViewById<ImageButton>(R.id.homeButton)
         homeButon.setOnClickListener {
-            openHomeFragment(Home(),bundle)
+            openHomeFragment(Home(), bundle)
         }
         val addNewButton = findViewById<ImageButton>(R.id.addExpensesButton)
         addNewButton.setOnClickListener {
@@ -41,15 +42,17 @@ class MainActivity : AppCompatActivity() {
             openFragment(MoreMenu())
         }
     }
+
     private fun openFragment(fragment: Fragment) {
         val fragmentTransaction: FragmentTransaction = supportFragmentManager.beginTransaction()
         fragmentTransaction.replace(R.id.fragment_container, fragment)
         fragmentTransaction.addToBackStack(null)
         fragmentTransaction.commit()
     }
-    private fun openHomeFragment(fragment: Fragment,bundle: Bundle) {
 
-        fragment.arguments=bundle
+    private fun openHomeFragment(fragment: Fragment, bundle: Bundle) {
+
+        fragment.arguments = bundle
         val fragmentTransaction: FragmentTransaction = supportFragmentManager.beginTransaction()
         fragmentTransaction.replace(R.id.fragment_container, fragment)
         fragmentTransaction.addToBackStack(null)

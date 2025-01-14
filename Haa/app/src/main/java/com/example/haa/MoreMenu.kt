@@ -1,5 +1,8 @@
 package com.example.haa
 
+import android.app.AlertDialog
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -16,11 +19,17 @@ class MoreMenu : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val view= inflater.inflate(R.layout.fragment_more_menu, container, false)
-        val categoryButton=view.findViewById<LinearLayout>(R.id.categoryButton)
+        val view = inflater.inflate(R.layout.fragment_more_menu, container, false)
+        val categoryButton = view.findViewById<LinearLayout>(R.id.categoryButton)
         categoryButton.setOnClickListener {
             openFragment(CategoryAdd())
         }
+
+        val logoutButton = view.findViewById<LinearLayout>(R.id.logoutButton)
+        logoutButton.setOnClickListener {
+            showConfirmationDialog(requireContext())
+        }
+
         return view
     }
 
@@ -29,5 +38,33 @@ class MoreMenu : Fragment() {
         fragmentTransaction.replace(R.id.fragment_container, fragment)
         fragmentTransaction.addToBackStack(null)
         fragmentTransaction.commit()
+    }
+
+    fun showConfirmationDialog(context: Context) {
+        val builder = AlertDialog.Builder(context)
+        builder.setTitle("Logout")
+        builder.setMessage("Are you sure you want to logout?")
+
+        builder.setPositiveButton("Confirm") { dialog, _ ->
+            logout()
+            dialog.dismiss() // Close the dialog
+        }
+
+        builder.setNegativeButton("Cancel") { dialog, _ ->
+            dialog.dismiss() // Close the dialog
+        }
+
+        val alertDialog = builder.create()
+        alertDialog.show()
+    }
+
+    private fun logout() {
+        val dbHelper = DBHelper(requireContext().applicationContext)
+        val user = dbHelper.findUserByStatus(1)
+        if (user != null) {
+            dbHelper.updateUserStatusByEmail(user.email, 0)
+            val myIntent = Intent(requireContext().applicationContext, LoginInterface::class.java)
+            startActivity(myIntent)
+        }
     }
 }

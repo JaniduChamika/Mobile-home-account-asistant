@@ -17,7 +17,7 @@ class ViewHistory : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val view= inflater.inflate(R.layout.fragment_view_history, container, false)
+        val view = inflater.inflate(R.layout.fragment_view_history, container, false)
         val incomeButton = view.findViewById<Button>(R.id.incomeButton)
         val expensesButton = view.findViewById<Button>(R.id.expensesButton)
         incomeButton.setOnClickListener {
@@ -36,8 +36,10 @@ class ViewHistory : Fragment() {
 
         }
         openFinanceHistoryTab(ViewExpensesHistory())
+
         return view
     }
+
     private fun openFinanceHistoryTab(fragment: Fragment) {
         val fragmentTransaction: FragmentTransaction = childFragmentManager.beginTransaction()
         fragmentTransaction.replace(R.id.historyFragementContainer, fragment)
