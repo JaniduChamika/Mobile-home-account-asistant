@@ -21,6 +21,7 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
         const val COLUMN_USER_NAME = "name"
         const val COLUMN_USER_EMAIL = "email"
         const val COLUMN_USER_PASSWORD = "password"
+        const val COLUMN_USER_STATUS = "status"
 
         //income table
         const val TABLE_INCOME = "Income"
@@ -55,7 +56,8 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
                 + "$COLUMN_USER_ID INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + "$COLUMN_USER_NAME TEXT, "
                 + "$COLUMN_USER_EMAIL TEXT, "
-                + "$COLUMN_USER_PASSWORD TEXT)")
+                + "$COLUMN_USER_PASSWORD TEXT,"
+                + "$COLUMN_USER_STATUS INTEGER)")
 
         val createIncomeTable = ("CREATE TABLE $TABLE_INCOME ("
                 + "$COLUMN_INCOME_ID INTEGER PRIMARY KEY AUTOINCREMENT, "
@@ -98,6 +100,7 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
         contentValues.put(COLUMN_USER_NAME, name)
         contentValues.put(COLUMN_USER_EMAIL, email)
         contentValues.put(COLUMN_USER_PASSWORD, password)
+        contentValues.put(COLUMN_USER_STATUS, 0)
         db.insert(TABLE_USERS, null, contentValues)
         db.close()
     }
@@ -334,5 +337,43 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
         cursor.close()
         db.close()
         return categoryList
+    }
+
+
+    fun updateUserStatusByEmail(email: String, newStatus: Int) {
+        val db = writableDatabase
+        val values = ContentValues()
+        values.put(COLUMN_USER_STATUS, newStatus)
+        db.update(
+            TABLE_USERS,                 // The table to update
+            values,                       // The new values to update
+            "$COLUMN_USER_EMAIL = ?",     // WHERE clause: filter by email
+            arrayOf(email)               // The value for the filter (email)
+        )
+
+        db.close()
+
+    }
+
+    fun findUserByStatus(status: Int): User? {
+        val db = readableDatabase
+        var user: User? = null
+
+        val sql = "SELECT * FROM $TABLE_USERS WHERE $COLUMN_USER_STATUS = $status"
+
+
+        val cursor = db.rawQuery(sql, null)
+
+        if (cursor.moveToFirst()) {
+            // Retrieve user details from the cursor
+            val id = cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_USER_ID))
+            val name = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_USER_NAME))
+            val email = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_USER_EMAIL))
+            user = User(id, name, email)
+
+        }
+        cursor.close()
+        db.close()
+        return user
     }
 }

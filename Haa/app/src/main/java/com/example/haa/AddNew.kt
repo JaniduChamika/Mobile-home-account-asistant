@@ -12,7 +12,9 @@ import androidx.fragment.app.FragmentTransaction
 
 
 class AddNew : Fragment() {
-
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,8 +40,10 @@ class AddNew : Fragment() {
 
         }
         openExpenseTab(AddExpenses())
+
         return view
     }
+
 
     private fun openExpenseTab(fragment: Fragment) {
         val fragmentTransaction: FragmentTransaction = childFragmentManager.beginTransaction()

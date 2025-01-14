@@ -46,6 +46,7 @@ class CategoryAdd : Fragment() {
             } else {
                 dbHelper.insertInCategory(category.text.toString())
             }
+
             openFragment(CategoryAdd())
 
         }

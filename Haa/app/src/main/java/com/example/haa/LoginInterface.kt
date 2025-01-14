@@ -12,7 +12,9 @@ import com.example.haa.datamodel.User
 class LoginInterface : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        checkActiveUser()
         setContentView(R.layout.login_interface)
+
         val createAccountBtn = findViewById<TextView>(R.id.createAcountText)
         createAccountBtn.setOnClickListener {
             goToRegisterScreen()
@@ -21,6 +23,14 @@ class LoginInterface : AppCompatActivity() {
         val loginButton = findViewById<TextView>(R.id.loginButton)
         loginButton.setOnClickListener {
             validateLogin()
+        }
+    }
+
+    private fun checkActiveUser() {
+        val dbHelper = DBHelper(applicationContext)
+        val user=dbHelper.findUserByStatus(1)
+        if(user!=null){
+            goToHomeScreen(user.email, user.name)
         }
     }
 
@@ -56,7 +66,8 @@ class LoginInterface : AppCompatActivity() {
                 Toast.makeText(this, "Incorrect Password", Toast.LENGTH_SHORT)
                     .show()
             } else {
-                goToHomeScreen(user.email,user.name)
+                dbHelper.updateUserStatusByEmail(email.toString(), 1)
+                goToHomeScreen(user.email, user.name)
             }
         }
     }
