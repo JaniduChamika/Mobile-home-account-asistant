@@ -29,6 +29,23 @@ class MoreMenu : Fragment() {
         logoutButton.setOnClickListener {
             showConfirmationDialog(requireContext())
         }
+        val contactUsButton = view.findViewById<LinearLayout>(R.id.contactUsButton)
+        contactUsButton.setOnClickListener {
+            val builder: AlertDialog.Builder = AlertDialog.Builder(context)
+            builder
+                .setMessage("Email: spendly@info.com \nVisit at: www.SpendlyApp.com")
+                .setTitle("Contact Us")
+                .setNegativeButton("Ok") { dialog, which ->
+                    dialog.dismiss()
+                }
+            val dialog: AlertDialog = builder.create()
+            dialog.show()
+        }
+
+        val profileButton = view.findViewById<LinearLayout>(R.id.profileButton)
+        profileButton.setOnClickListener {
+            openFragment(ProfileView())
+        }
 
         return view
     }
@@ -40,7 +57,7 @@ class MoreMenu : Fragment() {
         fragmentTransaction.commit()
     }
 
-    fun showConfirmationDialog(context: Context) {
+    private fun showConfirmationDialog(context: Context) {
         val builder = AlertDialog.Builder(context)
         builder.setTitle("Logout")
         builder.setMessage("Are you sure you want to logout?")

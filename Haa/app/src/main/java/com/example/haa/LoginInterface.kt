@@ -28,8 +28,8 @@ class LoginInterface : AppCompatActivity() {
 
     private fun checkActiveUser() {
         val dbHelper = DBHelper(applicationContext)
-        val user=dbHelper.findUserByStatus(1)
-        if(user!=null){
+        val user = dbHelper.findUserByStatus(1)
+        if (user != null) {
             goToHomeScreen(user.email, user.name)
         }
     }
@@ -41,8 +41,6 @@ class LoginInterface : AppCompatActivity() {
 
     private fun goToHomeScreen(email: String, name: String) {
         val myintent = Intent(this, MainActivity::class.java)
-        myintent.putExtra("email", email)
-        myintent.putExtra("name", name)
         startActivity(myintent)
     }
 

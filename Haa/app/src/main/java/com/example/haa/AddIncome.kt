@@ -85,14 +85,22 @@ class AddIncome : Fragment() {
         val category = view.findViewById<Spinner>(R.id.categorySpinner)
         val inputDate = view.findViewById<EditText>(R.id.editTextDate)
         val amount = view.findViewById<EditText>(R.id.expenseAmountEditText)
-
+        val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+        val parsedInputDate = dateFormat.parse(inputDate.text.toString())
+        val today = Calendar.getInstance().time
         if (category.selectedItemPosition == 0) {
             Toast.makeText(requireContext(), "Please Select Category", Toast.LENGTH_SHORT)
                 .show()
         } else if (inputDate.text.isEmpty()) {
             Toast.makeText(requireContext(), "Please Select Date", Toast.LENGTH_SHORT)
                 .show()
-        } else if (amount.text.isEmpty()) {
+        } else if (parsedInputDate != null && parsedInputDate > today) {
+            Toast.makeText(
+                view.context,
+                "Date should not greater than today",
+                Toast.LENGTH_SHORT
+            ).show()
+        }  else if (amount.text.isEmpty()) {
             Toast.makeText(requireContext(), "Please Enter Amount", Toast.LENGTH_SHORT)
                 .show()
         } else {
