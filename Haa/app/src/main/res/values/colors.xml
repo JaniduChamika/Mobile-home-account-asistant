@@ -10,4 +10,8 @@
     <color name="light_blue_theam">#06A1A4</color>
     <color name="gray_400">#a6a6a6</color>
     <color name="gray_700">#4a4a4a</color>
+    <color name="gray_200">#bfbfbf</color>
+    <color name="text_box_font_theam">#242424</color>
+    <color name="text_box_bg_theam">#FFFFFFFF</color>
+    <color name="box_focus_theam">#27a1a3</color>
 </resources>

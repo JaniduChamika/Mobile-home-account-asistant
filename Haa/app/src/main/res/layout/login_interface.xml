@@ -53,7 +53,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Email"
-                    android:textSize="20sp"
+                    android:textColor="@color/gray_700"
+                    android:layout_marginBottom="5dp"
+                    android:textSize="16sp"
                     android:textStyle="bold" />
 
                 <EditText
@@ -64,7 +66,13 @@
                     android:hint="Enter the Email"
                     android:inputType="textEmailAddress"
                     android:minHeight="48dp"
-                    android:padding="5dp" />
+                    android:padding="5dp"
+                    android:alpha="0.8"
+                    android:paddingStart="20dp"
+                    android:background="@drawable/edittext_rounded_border"
+                    android:textColor="@color/text_box_font_theam"
+                    android:textColorHint="@color/gray_400"
+                    android:textSize="16sp" />
 
                 <Space
                     android:layout_width="match_parent"
@@ -75,7 +83,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Password"
-                    android:textSize="20sp"
+                    android:textColor="@color/gray_700"
+                    android:layout_marginBottom="5dp"
+                    android:textSize="16sp"
                     android:textStyle="bold" />
 
                 <EditText
@@ -86,7 +96,13 @@
                     android:hint="Enter the Password"
                     android:inputType="textPassword"
                     android:minHeight="48dp"
-                    android:padding="5dp" />
+                    android:padding="5dp"
+                    android:alpha="0.8"
+                    android:paddingStart="20dp"
+                    android:background="@drawable/edittext_rounded_border"
+                    android:textColor="@color/text_box_font_theam"
+                    android:textColorHint="@color/gray_400"
+                    android:textSize="16sp" />
 
                 <Space
                     android:layout_width="match_parent"
@@ -98,9 +114,13 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:background="@drawable/default_theam_button"
-                    android:text="LOG IN"
+                    android:text="Sign In"
                     android:textColor="@color/white"
-                    android:textSize="20sp" />
+                    android:textSize="20sp"
+                    android:textAllCaps="false"
+                    android:textStyle="bold"
+                    android:elevation="10dp"
+                    android:layout_marginVertical="10dp"/>
             </LinearLayout>
 
 

@@ -53,7 +53,7 @@ class AddExpenses : Fragment() {
             options.addAll(expnesCategory.map { it.name })
         }
         val adapter =
-            ArrayAdapter(requireContext(), android.R.layout.simple_spinner_dropdown_item, options)
+            ArrayAdapter(requireContext(), R.layout.custom_spinner_item, options)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinner.adapter = adapter
         spinner.setSelection(0)

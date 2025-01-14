@@ -24,7 +24,8 @@
                 android:layout_weight="1"
                 android:background="@drawable/default_white_button"
                 android:text="Income"
-                android:textColor="@color/black" />
+                android:textColor="@color/black"
+                android:textAllCaps="false"/>
 
             <Button
                 android:id="@+id/expensesButton"
@@ -34,7 +35,8 @@
                 android:layout_weight="1"
                 android:background="@drawable/default_theam_button"
                 android:textColor="@color/white"
-                android:text="Expense" />
+                android:text="Expense"
+                android:textAllCaps="false"/>
         </LinearLayout>
         <FrameLayout
             android:id="@+id/historyFragementContainer"
