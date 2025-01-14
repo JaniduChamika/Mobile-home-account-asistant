@@ -43,7 +43,7 @@ class Registration : AppCompatActivity() {
         }else if (password.isEmpty()) {
             Toast.makeText(this, "Please Enter Password", Toast.LENGTH_SHORT)
                 .show()
-        }else if (password.toString().length>=4) {
+        }else if (password.toString().length<4) {
             Toast.makeText(this, "Password must be at least 4 characters", Toast.LENGTH_SHORT)
                 .show()
         }  else if (!password.toString().equals(compassword.toString())) {
