@@ -19,9 +19,10 @@ class ViewIncomeHistory : Fragment() {
         val view = inflater.inflate(R.layout.fragment_view_income_history, container, false)
         val recyclerView: RecyclerView = view.findViewById(R.id.recyclerView)
 
-        //data load start
+        val to=arguments?.getString("to")
+        val from=arguments?.getString("from")
         val dbHelper = DBHelper(requireContext().applicationContext)
-        val historyItemLists: List<Income>? = dbHelper.getAllIncomes()
+        val historyItemLists: List<Income>? = dbHelper.getAllIncomes(from,to)
         // Create adapter and set it to RecyclerView
         val adapter = HistoryItemAdapterIncome(historyItemLists)
         recyclerView.adapter = adapter

@@ -4,6 +4,7 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import android.util.Log
 import com.example.haa.datamodel.Category
 import com.example.haa.datamodel.Expense
 import com.example.haa.datamodel.Income
@@ -225,11 +226,67 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
         db.close()
         return incomeList
     }
-
+    fun getAllIncomes(from: String?, to: String?): List<Income>? {
+        val db = this.readableDatabase
+        var query = "SELECT * " +
+                " FROM $TABLE_INCOME"
+        if (!to.isNullOrEmpty() && !from.isNullOrEmpty()) {
+            query += " WHERE DATE($COLUMN_INCOME_DATE) >= DATE('$from') AND DATE($COLUMN_INCOME_DATE) <= DATE('$to')"
+        } else if (to.isNullOrEmpty() && !from.isNullOrEmpty()) {
+            query += " WHERE DATE($COLUMN_INCOME_DATE) >= DATE('$from') "
+        } else if (!to.isNullOrEmpty() && from.isNullOrEmpty()) {
+            query += " WHERE DATE($COLUMN_INCOME_DATE) <= DATE('$to')"
+        }
+        val cursor = db.rawQuery(query, null)
+        val incomeList = mutableListOf<Income>()
+        var income: Income? = null
+        while (cursor.moveToNext()) {
+            income = Income(
+                id = cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_INCOME_ID)),
+                category = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_INCOME_CATEGORY)),
+                date = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_INCOME_DATE)),
+                amount = cursor.getDouble(cursor.getColumnIndexOrThrow(COLUMN_INCOME_AMOUNT))
+            )
+            incomeList.add(income)
+        }
+        cursor.close()
+        db.close()
+        return incomeList
+    }
 
     fun getAllExpenses(): List<Expense>? {
         val db = this.readableDatabase
         val cursor = db.rawQuery("SELECT * FROM $TABLE_EXPENSE ", null)
+        val expenseList = mutableListOf<Expense>()
+        var expense: Expense? = null
+        while (cursor.moveToNext()) {
+            expense = Expense(
+                id = cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_EXPENSE_ID)),
+                category = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_EXPENSE_CATEGORY)),
+                date = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_EXPENSE_DATE)),
+                amount = cursor.getDouble(cursor.getColumnIndexOrThrow(COLUMN_EXPENSE_AMOUNT)),
+                note = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_EXPENSE_NOTE))
+            )
+            expenseList.add(expense)
+        }
+        cursor.close()
+        db.close()
+        return expenseList
+    }
+
+    fun getAllExpenses(from: String?, to: String?): List<Expense>? {
+        val db = this.readableDatabase
+        var query = "SELECT * " +
+                " FROM $TABLE_EXPENSE"
+        if (!to.isNullOrEmpty() && !from.isNullOrEmpty()) {
+            query += " WHERE DATE($COLUMN_EXPENSE_DATE) >= DATE('$from') AND DATE($COLUMN_EXPENSE_DATE) <= DATE('$to')"
+        } else if (to.isNullOrEmpty() && !from.isNullOrEmpty()) {
+            query += " WHERE DATE($COLUMN_EXPENSE_DATE) >= DATE('$from') "
+        } else if (!to.isNullOrEmpty() && from.isNullOrEmpty()) {
+            query += " WHERE DATE($COLUMN_EXPENSE_DATE) <= DATE('$to')"
+        }
+
+        val cursor = db.rawQuery(query, null)
         val expenseList = mutableListOf<Expense>()
         var expense: Expense? = null
         while (cursor.moveToNext()) {
@@ -352,7 +409,8 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
         )
         db.close()
     }
-    fun updateProfile(email: String, name: String,password: String) {
+
+    fun updateProfile(email: String, name: String, password: String) {
         val db = writableDatabase
         val values = ContentValues()
         values.put(COLUMN_USER_NAME, name)
@@ -366,6 +424,7 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
         )
         db.close()
     }
+
     fun findUserByStatus(status: Int): User? {
         val db = readableDatabase
         var user: User? = null
