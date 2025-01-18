@@ -27,8 +27,8 @@ class AddExpenses : Fragment() {
         val view = inflater.inflate(R.layout.fragment_add_expenses, container, false)
         //date chooser start
         val datePiker = view.findViewById<EditText>(R.id.editTextDate)
-        val calendar = Calendar.getInstance()
         val saveExpenseButton = view.findViewById<Button>(R.id.saveExpenseButton)
+        val calendar = Calendar.getInstance()
         val dateSetListener = DatePickerDialog.OnDateSetListener { _, year, month, dayOfMonth ->
             calendar.set(year, month, dayOfMonth)
             // Format the selected date

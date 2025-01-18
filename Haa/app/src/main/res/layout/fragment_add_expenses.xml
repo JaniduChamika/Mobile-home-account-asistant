@@ -62,6 +62,7 @@
                 android:layout_height="wrap_content"
                 android:alpha="0.8"
                 android:background="@drawable/edittext_rounded_border"
+                android:drawableEnd="@drawable/calander_textfield_desing"
                 android:clickable="true"
                 android:ems="10"
                 android:focusable="false"

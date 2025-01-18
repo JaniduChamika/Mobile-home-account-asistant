@@ -24,7 +24,9 @@ class ViewExpensesHistory : Fragment() {
 
         //data load start
         val dbHelper = DBHelper(requireContext().applicationContext)
-        val historyItemLists: List<Expense>? = dbHelper.getAllExpenses()
+        val to=arguments?.getString("to")
+        val from=arguments?.getString("from")
+        val historyItemLists: List<Expense>? = dbHelper.getAllExpenses(from,to)
         // Create adapter and set it to RecyclerView
         val adapter = HistoryItemAdapter(historyItemLists)
         recyclerView.adapter = adapter

@@ -3,13 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ViewHistory"
-    android:padding="16dp">
+    android:padding="16dp"
+    tools:context=".ViewHistory">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -24,8 +25,8 @@
                 android:layout_weight="1"
                 android:background="@drawable/default_white_button"
                 android:text="Income"
-                android:textColor="@color/black"
-                android:textAllCaps="false"/>
+                android:textAllCaps="false"
+                android:textColor="@color/black" />
 
             <Button
                 android:id="@+id/expensesButton"
@@ -34,16 +35,64 @@
                 android:layout_marginLeft="10dp"
                 android:layout_weight="1"
                 android:background="@drawable/default_theam_button"
-                android:textColor="@color/white"
                 android:text="Expense"
-                android:textAllCaps="false"/>
+                android:textAllCaps="false"
+                android:textColor="@color/white" />
         </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="5dp"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/fromDateEdit"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:alpha="0.8"
+                android:background="@drawable/edittext_rounded_border"
+                android:clickable="true"
+                android:drawableEnd="@drawable/calander_textfield_desing"
+                android:ems="10"
+                android:focusable="false"
+                android:hint="From Date"
+                android:inputType="date"
+                android:minHeight="48dp"
+                android:paddingStart="20dp"
+                android:textColor="@color/text_box_font_theam"
+                android:textColorHint="@color/gray_400"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/toDateEdit"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:alpha="0.8"
+                android:background="@drawable/edittext_rounded_border"
+                android:drawableEnd="@drawable/calander_textfield_desing"
+                android:clickable="true"
+                android:ems="10"
+                android:focusable="false"
+                android:hint="To Date"
+                android:inputType="date"
+                android:minHeight="48dp"
+                android:paddingStart="20dp"
+                android:textColor="@color/text_box_font_theam"
+                android:textColorHint="@color/gray_400"
+                android:textSize="16sp" />
+        </LinearLayout>
+
         <FrameLayout
             android:id="@+id/historyFragementContainer"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scrollbars="vertical"
-            >
+            android:scrollbars="vertical">
 
         </FrameLayout>
     </LinearLayout>
