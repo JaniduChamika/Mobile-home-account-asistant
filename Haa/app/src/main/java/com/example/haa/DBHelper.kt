@@ -226,6 +226,7 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
         db.close()
         return incomeList
     }
+
     fun getAllIncomes(from: String?, to: String?): List<Income>? {
         val db = this.readableDatabase
         var query = "SELECT * " +
@@ -446,4 +447,49 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
         db.close()
         return user
     }
+
+    fun getMonthlyTotalExpense(month: String): Double {
+        val db = this.readableDatabase
+
+        val query = "SELECT SUM($COLUMN_EXPENSE_AMOUNT)" +
+                " FROM $TABLE_EXPENSE" +
+                " WHERE strftime('%Y-%m', $COLUMN_EXPENSE_DATE) = '${convertToYearMonth(month)}'"
+
+        val cursor = db.rawQuery(query, null)
+        var totalAmount = 0.0
+        if (cursor.moveToFirst()) {
+            totalAmount = cursor.getDouble(0)
+        }
+        cursor.close()
+        db.close()
+        return totalAmount
+    }
+
+    fun getMonthlyTotalIncome(month: String): Double {
+        val db = this.readableDatabase
+
+        val query = "SELECT SUM($COLUMN_INCOME_AMOUNT)" +
+                " FROM $TABLE_INCOME" +
+                " WHERE strftime('%Y-%m', $COLUMN_INCOME_DATE) = '${convertToYearMonth(month)}'"
+
+        val cursor = db.rawQuery(query, null)
+        var totalAmount = 0.0
+        if (cursor.moveToFirst()) {
+            totalAmount = cursor.getDouble(0)
+        }
+        cursor.close()
+        db.close()
+//        Log.println(Log.ASSERT, "myapp", "total $query")
+        return totalAmount
+    }
+}
+
+fun convertToYearMonth(input: String): String {
+    // Split the input into month and year components
+    val parts = input.split("/")
+    val month = parts[0]
+    val year = "20${parts[1]}" // Assuming all dates are in 21st century
+
+    // Return the formatted string as YYYY-MM
+    return "$year-$month"
 }
