@@ -34,11 +34,15 @@ class Registration : AppCompatActivity() {
         val email = findViewById<EditText>(R.id.editEmail).text
         val password = findViewById<EditText>(R.id.editPassword).text
         val compassword = findViewById<EditText>(R.id.editComPassword).text
+        val emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+"
         if (name.isEmpty()) {
             Toast.makeText(this, "Please Enter your Name", Toast.LENGTH_SHORT)
                 .show()
         } else if (email.isEmpty()) {
             Toast.makeText(this, "Please Enter Email", Toast.LENGTH_SHORT)
+                .show()
+        } else if (!email.matches(emailPattern.toRegex())) {
+            Toast.makeText(this, "Invalid email address", Toast.LENGTH_SHORT)
                 .show()
         }else if (password.isEmpty()) {
             Toast.makeText(this, "Please Enter Password", Toast.LENGTH_SHORT)
