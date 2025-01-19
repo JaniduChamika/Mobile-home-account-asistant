@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.fragment.app.FragmentContainerView
+import androidx.fragment.app.FragmentTransaction
 
 
 class Home : Fragment() {
@@ -18,6 +20,8 @@ class Home : Fragment() {
         val view = inflater.inflate(R.layout.fragment_home, container, false)
         loadUserName(view)
         loadSummaryBox(view)
+
+        openChartFragment()
         return view
     }
 
@@ -52,5 +56,11 @@ class Home : Fragment() {
 
 
     }
-
+    private fun openChartFragment() {
+        val fragment=ChartView()
+        val fragmentTransaction: FragmentTransaction = childFragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.chartFragment, fragment)
+        fragmentTransaction.addToBackStack(null)
+        fragmentTransaction.commit()
+    }
 }
