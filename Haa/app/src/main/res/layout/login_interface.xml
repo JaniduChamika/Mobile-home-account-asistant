@@ -14,7 +14,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingTop="50dp">
 
             <FrameLayout
                 android:layout_width="match_parent"
@@ -52,9 +53,9 @@
                     android:id="@+id/textView8"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
                     android:text="Email"
                     android:textColor="@color/gray_700"
-                    android:layout_marginBottom="5dp"
                     android:textSize="16sp"
                     android:textStyle="bold" />
 
@@ -63,13 +64,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    android:alpha="0.8"
+                    android:background="@drawable/edittext_rounded_border"
                     android:hint="Enter the Email"
                     android:inputType="textEmailAddress"
                     android:minHeight="48dp"
                     android:padding="5dp"
-                    android:alpha="0.8"
                     android:paddingStart="20dp"
-                    android:background="@drawable/edittext_rounded_border"
                     android:textColor="@color/text_box_font_theam"
                     android:textColorHint="@color/gray_400"
                     android:textSize="16sp" />
@@ -82,9 +83,9 @@
                     android:id="@+id/textView9"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
                     android:text="Password"
                     android:textColor="@color/gray_700"
-                    android:layout_marginBottom="5dp"
                     android:textSize="16sp"
                     android:textStyle="bold" />
 
@@ -93,13 +94,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    android:alpha="0.8"
+                    android:background="@drawable/edittext_rounded_border"
                     android:hint="Enter the Password"
                     android:inputType="textPassword"
                     android:minHeight="48dp"
                     android:padding="5dp"
-                    android:alpha="0.8"
                     android:paddingStart="20dp"
-                    android:background="@drawable/edittext_rounded_border"
                     android:textColor="@color/text_box_font_theam"
                     android:textColorHint="@color/gray_400"
                     android:textSize="16sp" />
@@ -113,14 +114,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    android:layout_marginVertical="10dp"
                     android:background="@drawable/default_theam_button"
+                    android:elevation="10dp"
                     android:text="Sign In"
+                    android:textAllCaps="false"
                     android:textColor="@color/white"
                     android:textSize="20sp"
-                    android:textAllCaps="false"
-                    android:textStyle="bold"
-                    android:elevation="10dp"
-                    android:layout_marginVertical="10dp"/>
+                    android:textStyle="bold" />
             </LinearLayout>
 
 
@@ -152,82 +153,8 @@
                     android:textSize="13sp" />
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="26dp"
-                android:layout_marginTop="20dp"
-                android:orientation="horizontal"
-                android:paddingHorizontal="10dp">
-
-                <View
-                    android:id="@+id/view3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="2dp"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="40dp"
-                    android:layout_weight="1"
-                    android:background="@color/gray_400" />
-
-                <TextView
-                    android:id="@+id/textView12"
-                    android:layout_width="30dp"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text=" or"
-                    android:textColor="@color/black" />
-
-                <View
-                    android:id="@+id/view2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="2dp"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginRight="40dp"
-                    android:layout_weight="1"
-                    android:background="@color/gray_400" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="104dp"
-                android:orientation="horizontal"
-                android:paddingHorizontal="10dp">
-
-                <FrameLayout
-                    android:layout_width="0dp"
-                    android:layout_height="55dp"
-                    android:layout_margin="8dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/edittext1_background"
-                    android:paddingHorizontal="10dp">
-
-                    <ImageView
-                        android:id="@+id/imageView4"
-                        android:layout_width="45dp"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="center"
-                        android:layout_margin="2dp"
-                        app:srcCompat="@drawable/_567" />
 
 
-                </FrameLayout>
-
-                <FrameLayout
-                    android:layout_width="0dp"
-                    android:layout_height="52dp"
-                    android:layout_margin="10dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/edittext1_background">
-
-                    <ImageView
-                        android:id="@+id/imageView3"
-                        android:layout_width="48dp"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="center"
-                        android:layout_margin="2dp"
-                        app:srcCompat="@drawable/_245" />
-
-                </FrameLayout>
-            </LinearLayout>
 
 
         </LinearLayout>
