@@ -238,6 +238,7 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
         } else if (!to.isNullOrEmpty() && from.isNullOrEmpty()) {
             query += " WHERE DATE($COLUMN_INCOME_DATE) <= DATE('$to')"
         }
+        query +=" ORDER BY $COLUMN_INCOME_DATE DESC"
         val cursor = db.rawQuery(query, null)
         val incomeList = mutableListOf<Income>()
         var income: Income? = null
@@ -286,6 +287,7 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
         } else if (!to.isNullOrEmpty() && from.isNullOrEmpty()) {
             query += " WHERE DATE($COLUMN_EXPENSE_DATE) <= DATE('$to')"
         }
+        query +=" ORDER BY $COLUMN_EXPENSE_DATE DESC"
 
         val cursor = db.rawQuery(query, null)
         val expenseList = mutableListOf<Expense>()
