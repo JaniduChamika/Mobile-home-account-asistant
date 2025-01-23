@@ -42,9 +42,19 @@ class CategoryAdd : Fragment() {
                 .show()
         } else {
             if (radioBtnExpense.isChecked) {
-                dbHelper.insertExCategory(category.text.toString())
+                if (!dbHelper.checkExpenseCategoryExist(category.text.toString())) {
+                    dbHelper.insertExCategory(category.text.toString())
+                } else {
+                    Toast.makeText(requireContext(), "Category Already exits", Toast.LENGTH_SHORT)
+                        .show()
+                }
             } else {
-                dbHelper.insertInCategory(category.text.toString())
+                if (!dbHelper.checkIncomeCategoryExist(category.text.toString())) {
+                    dbHelper.insertInCategory(category.text.toString())
+                } else {
+                    Toast.makeText(requireContext(), "Category Already exits", Toast.LENGTH_SHORT)
+                        .show()
+                }
             }
 
             openFragment(CategoryAdd())

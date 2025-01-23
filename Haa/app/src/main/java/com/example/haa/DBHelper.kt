@@ -379,7 +379,28 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
         db.close()
         return categoryList
     }
-
+    fun checkIncomeCategoryExist(name:String): Boolean {
+        val db = this.readableDatabase
+        val cursor = db.rawQuery("SELECT * FROM $TABLE_INCOME_CATEGORY WHERE LOWER($COLUMN_INCOME_CATEGORY_NAME) =LOWER('$name') ", null)
+       var isExits=false
+        if (cursor.moveToNext()) {
+            isExits=true
+        }
+        cursor.close()
+        db.close()
+        return isExits
+    }
+    fun checkExpenseCategoryExist(name:String): Boolean {
+        val db = this.readableDatabase
+        val cursor = db.rawQuery("SELECT * FROM $TABLE_EXPENSE_CATEGORY WHERE LOWER($COLUMN_EXPENSE_CATEGORY_NAME) = LOWER('$name') ", null)
+        var isExits=false
+        if (cursor.moveToNext()) {
+            isExits=true
+        }
+        cursor.close()
+        db.close()
+        return isExits
+    }
     fun getAllExpenseCategory(): List<Category>? {
         val db = this.readableDatabase
         val cursor = db.rawQuery("SELECT * FROM $TABLE_EXPENSE_CATEGORY ", null)
