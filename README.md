@@ -111,7 +111,7 @@ Ensure all dependencies are properly downloaded. If you encounter issues:
 
 | Home | Expenses Hisotry |
 |----------------------------|----------------------------|
-| ![Home](ui/home.jpg) | ![Expenses Hisotry](ui/history.png) |
+| ![Home](ui/home.png) | ![Expenses Hisotry](ui/history.png) |
 
 | New Expense | Category |
 |------------------------|-------------------|
